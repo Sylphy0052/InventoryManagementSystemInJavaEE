@@ -110,4 +110,8 @@ public class DBController {
                 .setParameter("price", null)
                 .getResultList();
     }
+    
+    public void update(InventoryTB inventory) {
+        em.merge(inventory);
+    }
 }
