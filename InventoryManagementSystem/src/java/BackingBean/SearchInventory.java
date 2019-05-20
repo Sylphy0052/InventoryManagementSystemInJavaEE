@@ -12,15 +12,13 @@ import javax.inject.Named;
 @SessionScoped
 @Named
 public class SearchInventory implements Serializable {
-    private String keyword;
+    private String keyword = "";
     private List<ViewData> viewList;
     
     @EJB
     private DBController dbc;
     
-    public SearchInventory() {
-//        getInventoryList();
-    }
+    public SearchInventory() {}
     
     private void createInventoryList() {
         viewList = new ArrayList<>();
@@ -64,6 +62,7 @@ public class SearchInventory implements Serializable {
     }
 
     public List<ViewData> getViewList() {
+        createInventoryList();
         return viewList;
     }
 
@@ -84,9 +83,17 @@ public class SearchInventory implements Serializable {
         public ViewData(String title, String author, String rank, String price, String storage, InventoryTB inventory) {
             this.title = title;
             this.author = author;
-            this.rank = rank;
+            if(rank.contains("Not Select")) {
+                this.rank = "";
+            } else {
+                this.rank = rank;
+            }
             this.price = price;
-            this.storage = storage;
+            if(storage.contains("Not Select")) {
+                this.storage = "";
+            } else {
+                this.storage = storage;
+            }
             this.inventory = inventory;
         }
 
@@ -128,6 +135,14 @@ public class SearchInventory implements Serializable {
 
         public void setStorage(String storage) {
             this.storage = storage;
+        }
+
+        public InventoryTB getInventory() {
+            return inventory;
+        }
+
+        public void setInventory(InventoryTB inventory) {
+            this.inventory = inventory;
         }
     }
 }
