@@ -1,0 +1,63 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:jsf="http://xmlns.jcp.org/jsf">
+    <h:head>
+        <title>Incomplete Inventory List Page</title>
+        <link rel="stylesheet" type="text/css" href="./css/style.css"/>
+    </h:head>
+    <h:body>
+        <div class="inventory-list">
+            <div class="inventory-name">
+                <h2>Inventory List</h2>
+            </div>
+            <h:form>
+                <div class="keyword">
+                    <input type="text" jsf:value="#{searchInventory.keyword}" placeholder="Keyword" />
+                    <h:commandButton value="Search" action="#{searchInventory.search()}" />
+                </div>
+                <h:dataTable value="#{searchInventory.viewList}" var="view_data" id="inventory-table" border="1" >
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Title:" />
+                        </f:facet>
+                        #{view_data.title}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Author:" />
+                        </f:facet>
+                        #{view_data.author}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Status" />
+                        </f:facet>
+                        #{view_data.rank}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Price:" />
+                        </f:facet>
+                        #{view_data.price}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Storage:" />
+                        </f:facet>
+                        #{view_data.storage}
+                    </h:column>
+                    <h:column>
+                        <h:commandButton value="Update" action="#{inventory.goToUpdate(view_data.inventory)}" />
+                    </h:column>
+                    <h:column>
+                        <h:commandButton value="Update Quantity" action="#{inventory.goToUpdateQuantity(view_data.inventory)}" />
+                    </h:column>
+                </h:dataTable>
+            </h:form>
+        </div>
+    </h:body>
+</html>
