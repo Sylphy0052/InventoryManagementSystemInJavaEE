@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:jsf="http://xmlns.jcp.org/jsf">
+    <h:head>
+        <title>Top Page</title>
+        <link rel="stylesheet" type="text/css" href="./css/style.css"/>
+    </h:head>
+    <h:body>
+        <h1>Top Page</h1>
+        <h2 class="err">#{topPage.message}</h2>
+        <a jsf:outcome="login" target="_blank">Login Page</a>
+        <h:form class="btn">
+            <h:commandButton value="Add Status Table" action="#{topPage.addStatus()}" />
+            <h:commandButton value="Add Storage Table" action="#{topPage.addStorage()}" />
+        </h:form>
+        
+    </h:body>
+</html>
