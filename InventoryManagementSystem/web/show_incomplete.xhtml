@@ -10,6 +10,11 @@
         <link rel="stylesheet" type="text/css" href="./css/style.css"/>
     </h:head>
     <h:body>
+        <header>
+            <ui:insert name="header">
+                <ui:include src="./templates/header.xhtml"/>
+            </ui:insert> 
+        </header>
         <div class="inventory-list">
             <div class="inventory-name">
                 <h2>Incomplete Inventory List</h2>
@@ -47,7 +52,7 @@
                         #{view_data.storage}
                     </h:column>
                     <h:column>
-                        <h:commandButton value="Update" action="#{inventory.goToUpdate(view_data.inventory)}" />
+                        <h:commandButton value="Update" action="#{updateInventory.toUpdate(view_data.inventory)}" />
                     </h:column>
                     <h:column>
                         <h:commandButton value="Update Quantity" action="#{inventory.goToUpdateQuantity(view_data.inventory)}" />
