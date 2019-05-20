@@ -11,7 +11,7 @@ li {
     list-style: none;
 }
 
-h1,h2,h3,.btn,table,a {
+h1,h2,h3,.btn,table,a,.keyword {
     text-align: center;
     margin: 10px auto;
 }
