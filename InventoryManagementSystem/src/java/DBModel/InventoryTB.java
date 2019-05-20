@@ -42,6 +42,7 @@ public class InventoryTB implements Serializable {
         this.book = book;
         this.status = status;
         this.storage = storage;
+        this.quantity = 1;
     }
     
     public InventoryTB(BookTB book, StatusTB status, StorageTB storage, String price) {
@@ -49,6 +50,7 @@ public class InventoryTB implements Serializable {
         this.status = status;
         this.storage = storage;
         this.price = Integer.valueOf(price);
+        this.quantity = 1;
     }
 
     public Integer getInventoryId() {
@@ -60,7 +62,7 @@ public class InventoryTB implements Serializable {
     }
 
     public String getPrice() {
-        return String.valueOf(price);
+        return price == null? "": String.valueOf(price);
     }
 
     public void setPrice(String price) {
@@ -91,12 +93,12 @@ public class InventoryTB implements Serializable {
         this.note = note;
     }
 
-    public Integer getQuantity() {
-        return quantity;
+    public String getQuantity() {
+        return quantity == null? "": String.valueOf(quantity);
     }
 
-    public void setQuantity(Integer quantity) {
-        this.quantity = quantity;
+    public void setQuantity(String quantity) {
+        this.quantity = Integer.valueOf(quantity);
     }
     
     public BookTB getBook() {
