@@ -57,7 +57,7 @@ header {
     float: left;
 }
 
-.client-list form table {
+/*.client-list form table {
     border-collapse: collapse;
     border-spacing: 0;
     table-layout: fixed;
@@ -66,4 +66,4 @@ header {
 .client-list form table td {
     border: solid 1px black;
     width: 300px;
-}
+}*/
