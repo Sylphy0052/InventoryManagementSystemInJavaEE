@@ -1,5 +1,6 @@
 package Controller;
 
+import DBModel.InventoryTB;
 import DBModel.StatusTB;
 import DBModel.StorageTB;
 import DBModel.UserTB;
@@ -28,6 +29,10 @@ public class DBController {
         em.persist(user);
     }
     
+    public void add(InventoryTB inventory) {
+        em.persist(inventory);
+    }
+    
     public UserTB getUser(String name, String pass) {
         TypedQuery<UserTB> query = em.createQuery(
                 "SELECT u FROM UserTB u WHERE u.name = :name AND u.pass = :pass",
@@ -36,6 +41,26 @@ public class DBController {
         return query
                 .setParameter("name", name)
                 .setParameter("pass", pass)
+                .getSingleResult();
+    }
+    
+    public StorageTB getStorage(String name) {
+        TypedQuery<StorageTB> query = em.createQuery(
+                "SELECT s FROM StorageTB s WHERE s.name = :name",
+                StorageTB.class
+        );
+        return query
+                .setParameter("name", name)
+                .getSingleResult();
+    }
+    
+    public StatusTB getStatus(String rank) {
+        TypedQuery<StatusTB> query = em.createQuery(
+                "SELECT s FROM StatusTB s WHERE s.rank = :rank",
+                StatusTB.class
+        );
+        return query
+                .setParameter("rank", rank)
                 .getSingleResult();
     }
     
