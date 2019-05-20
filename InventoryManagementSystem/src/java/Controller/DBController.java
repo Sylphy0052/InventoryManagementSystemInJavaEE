@@ -4,8 +4,6 @@ import DBModel.InventoryTB;
 import DBModel.StatusTB;
 import DBModel.StorageTB;
 import DBModel.UserTB;
-import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -87,24 +85,29 @@ public class DBController {
     }
     
     public List<InventoryTB> getInventoryList(String keyword) {
-        TypedQuery<InventoryTB> titleQuery = em.createQuery(
-                "SELECT i FROM InventoryTB i WHERE i.book.title = :title",
+        TypedQuery<InventoryTB> query = em.createQuery(
+                "SELECT i FROM InventoryTB i"
+                        + " WHERE i.book.title LIKE :keyword"
+                        + " OR i.book.author LIKE :keyword",
                 InventoryTB.class
         );
-        List<InventoryTB> titleList = titleQuery
-                .setParameter("title", keyword)
+        return query
+                .setParameter("keyword", "%" + keyword + "%")
                 .getResultList();
-        
-        TypedQuery<InventoryTB> authorQuery = em.createQuery(
-                "SELECT i FROM InventoryTB i WHERE i.book.author = :author",
+    }
+    
+    public List<InventoryTB> getIncompleteInventoryList() {
+        TypedQuery<InventoryTB> query = em.createQuery(
+                "SELECT i FROM InventoryTB i "
+                        + "WHERE i.status.status_id = :status"
+                        + " OR i.storage.storage_id = :storage"
+                        + " OR i.price = :price",
                 InventoryTB.class
         );
-        List<InventoryTB> authorList = authorQuery
-                .setParameter("author", keyword)
+        return query
+                .setParameter("status", 1)
+                .setParameter("storage", 1)
+                .setParameter("price", null)
                 .getResultList();
-        
-        List<InventoryTB> resultList = titleList;
-        resultList = new ArrayList<>(new HashSet<>(authorList));
-        return resultList;
     }
 }
