@@ -28,8 +28,8 @@ public class TopPage implements Serializable {
             if (!statusList.isEmpty()) {
                 message = "Status table is already added";
             } else {
-                String[] rank = {"A", "B", "C", "D", "E"};
-                String[] desc = {"Best", "Good", "Normal", "Not good", "Bad"};
+                String[] rank = {"-Not Select-", "A", "B", "C", "D", "E"};
+                String[] desc = {"None", "Best", "Good", "Normal", "Not good", "Bad"};
                 for (int i = 0; i < rank.length; i++) {
                     StatusTB status = new StatusTB(rank[i], desc[i]);
                     dbc.add(status);
@@ -48,7 +48,7 @@ public class TopPage implements Serializable {
             if (!storageList.isEmpty()) {
                 message = "Storage table is already added";
             } else {
-                String[] storageNames = {"StorageA", "StorageB"};
+                String[] storageNames = {"-Not Select-", "StorageA", "StorageB"};
                 for(String name: storageNames) {
                     StorageTB storage = new StorageTB(name);
                     dbc.add(storage);
