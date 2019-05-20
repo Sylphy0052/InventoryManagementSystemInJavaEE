@@ -21,10 +21,6 @@ public class Selection implements Serializable {
     
     private void createStatusItems() {
         statusItems = new ArrayList<>();
-        final SelectItem defaultItem = new SelectItem();
-        defaultItem.setLabel("-Not Select-");
-        defaultItem.setValue(null);
-        statusItems.add(defaultItem);
         dbc.getStatusList().stream().map((model) -> {
             final SelectItem item = new SelectItem();
             item.setLabel(model.getRank());
@@ -37,10 +33,6 @@ public class Selection implements Serializable {
     
     private void createStorageItems() {
         storageItems = new ArrayList<>();
-        final SelectItem defaultItem = new SelectItem();
-        defaultItem.setLabel("-Not Select-");
-        defaultItem.setValue(null);
-        storageItems.add(defaultItem);
         dbc.getStorageList().stream().map((model) -> {
             final SelectItem item = new SelectItem();
             item.setLabel(model.getName());
