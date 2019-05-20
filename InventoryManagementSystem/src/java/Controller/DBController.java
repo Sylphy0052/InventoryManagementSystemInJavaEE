@@ -87,8 +87,9 @@ public class DBController {
     public List<InventoryTB> getInventoryList(String keyword) {
         TypedQuery<InventoryTB> query = em.createQuery(
                 "SELECT i FROM InventoryTB i"
-                        + " WHERE i.book.title LIKE :keyword"
-                        + " OR i.book.author LIKE :keyword",
+                        + " WHERE (i.book.title LIKE :keyword"
+                        + " OR i.book.author LIKE :keyword)"
+                        + " AND i.quantity <> 0",
                 InventoryTB.class
         );
         return query
@@ -99,9 +100,10 @@ public class DBController {
     public List<InventoryTB> getIncompleteInventoryList() {
         TypedQuery<InventoryTB> query = em.createQuery(
                 "SELECT i FROM InventoryTB i "
-                        + "WHERE i.status.statusId = :status"
+                        + "WHERE (i.status.statusId = :status"
                         + " OR i.storage.storageId = :storage"
-                        + " OR i.price = :price",
+                        + " OR i.price = :price)"
+                        + " AND i.quantity <> 0",
                 InventoryTB.class
         );
         return query
