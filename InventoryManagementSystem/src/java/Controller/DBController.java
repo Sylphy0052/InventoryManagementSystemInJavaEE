@@ -4,6 +4,8 @@ import DBModel.InventoryTB;
 import DBModel.StatusTB;
 import DBModel.StorageTB;
 import DBModel.UserTB;
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -77,5 +79,32 @@ public class DBController {
     public List<UserTB> getUserList() {
         return em.createQuery("SELECT u FROM UserTB u")
                 .getResultList();
+    }
+    
+    public List<InventoryTB> getInventoryList() {
+        return em.createQuery("SELECT i FROM InventoryTB i")
+                .getResultList();
+    }
+    
+    public List<InventoryTB> getInventoryList(String keyword) {
+        TypedQuery<InventoryTB> titleQuery = em.createQuery(
+                "SELECT i FROM InventoryTB i WHERE i.book.title = :title",
+                InventoryTB.class
+        );
+        List<InventoryTB> titleList = titleQuery
+                .setParameter("title", keyword)
+                .getResultList();
+        
+        TypedQuery<InventoryTB> authorQuery = em.createQuery(
+                "SELECT i FROM InventoryTB i WHERE i.book.author = :author",
+                InventoryTB.class
+        );
+        List<InventoryTB> authorList = authorQuery
+                .setParameter("author", keyword)
+                .getResultList();
+        
+        List<InventoryTB> resultList = titleList;
+        resultList = new ArrayList<>(new HashSet<>(authorList));
+        return resultList;
     }
 }
