@@ -3,6 +3,7 @@ package BackingBean;
 import Controller.DBController;
 import DBModel.StatusTB;
 import DBModel.StorageTB;
+import DBModel.UserTB;
 import java.io.Serializable;
 import java.util.List;
 import javax.ejb.EJB;
@@ -57,6 +58,26 @@ public class TopPage implements Serializable {
         } catch (EJBException e) {
             message = "EJBException while adding storage table";
         }
+        return null;
+    }
+    
+    public String addUser() {
+        try {
+            List<UserTB> userList = dbc.getUserList();
+            if (!userList.isEmpty()) {
+                message = "User table is already added";
+            } else {
+                dbc.add(new UserTB("test", "test"));
+                message = "Add user table";
+            }
+        } catch (EJBException e) {
+            message = "EJBException while adding user table";
+        }
+        return null;
+    }
+    
+    public String clear() {
+        message = "";
         return null;
     }
 
