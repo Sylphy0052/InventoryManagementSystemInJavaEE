@@ -12,14 +12,10 @@
     <h:body>
         <div class="inventory-list">
             <div class="inventory-name">
-                <h2>Inventory List</h2>
+                <h2>Incomplete Inventory List</h2>
             </div>
             <h:form>
-                <div class="keyword">
-                    <input type="text" jsf:value="#{searchInventory.keyword}" placeholder="Keyword" />
-                    <h:commandButton value="Search" action="#{searchInventory.search()}" />
-                </div>
-                <h:dataTable value="#{searchInventory.viewList}" var="view_data" id="inventory-table" border="1" >
+                <h:dataTable value="#{showIncomplete.viewList}" var="view_data" id="inventory-table" border="1" >
                     <h:column>
                         <f:facet name="header">
                             <h:outputText value="Title:" />
