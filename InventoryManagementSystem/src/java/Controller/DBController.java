@@ -99,8 +99,8 @@ public class DBController {
     public List<InventoryTB> getIncompleteInventoryList() {
         TypedQuery<InventoryTB> query = em.createQuery(
                 "SELECT i FROM InventoryTB i "
-                        + "WHERE i.status.status_id = :status"
-                        + " OR i.storage.storage_id = :storage"
+                        + "WHERE i.status.statusId = :status"
+                        + " OR i.storage.storageId = :storage"
                         + " OR i.price = :price",
                 InventoryTB.class
         );
