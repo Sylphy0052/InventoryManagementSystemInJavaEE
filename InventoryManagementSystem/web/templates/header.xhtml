@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:jsf="http://xmlns.jcp.org/jsf"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head><title></title></h:head>
+    <h:body>
+        <ui:composition>
+            <div id="head-column">
+                <h:form>
+                    <div id="logo">
+                        <div id="logo-text"><h:outputText value="IMS"/></div>
+                        <h:commandButton styleClass="nav-right" value="Logout" action="login.xhtml" />
+                    </div>
+                    <div class="br"></div>
+
+                    <nav>
+                        <ul id="header-ui">
+                            <li><h:commandButton styleClass="nav-btn" value="Regist inventory information" action="register_inventory.xhtml" /></li>
+                            <li><h:commandButton styleClass="nav-btn" value="Search inventory" action="search_inventory.xhtml"/></li>
+                            <li><h:commandButton styleClass="nav-btn" value="Incomplete information" action="show_incomplete.xhtml"/></li>                    
+                        </ul>
+                    </nav>
+                </h:form>
+            </div>
+            <div class="br"></div>
+        </ui:composition>
+    </h:body>
+</html>
