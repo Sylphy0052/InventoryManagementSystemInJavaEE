@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:jsf="http://xmlns.jcp.org/jsf"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Confirm Register Inventory Page</title>
+        <link rel="stylesheet" type="text/css" href="./css/style.css"/>
+    </h:head>
+    <h:body>
+        <div class="main">
+            <h:form>
+                <h2>Confirm Register Inventory</h2>
+                <table>
+                    <tr>
+                        <td>Title: </td>
+                        <td>#{registerInventory.title}</td>
+                    </tr>
+                    <tr>
+                        <td>Author: </td>
+                        <td>#{registerInventory.author}</td>
+                    </tr>
+                    <tr>
+                        <td>Status: </td>
+                        <td>#{registerInventory.status}</td>
+                    </tr>
+                    <tr>
+                        <td>Price: </td>
+                        <td>￥#{registerInventory.price}</td>
+                    </tr>
+                    <tr>
+                        <td>Storage: </td>
+                        <td>#{registerInventory.storage}</td>
+                    </tr>
+                </table>
+                <div class="btn">
+                    <h:commandButton value="Back" action="#{registerInventory.back}" />
+                    <h:commandButton value="Register" action="#{registerInventory.registerInventory()}" />
+                </div>
+            </h:form>
+        </div>
+    </h:body>
+</html>
