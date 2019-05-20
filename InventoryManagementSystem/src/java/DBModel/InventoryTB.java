@@ -16,11 +16,12 @@ public class InventoryTB implements Serializable {
     @Column(name = "inventory_id")
     private Integer inventoryId;
     
-    private String price;
+    private Integer price;
     @Column(name = "book_size")
     private String bookSize;
     private String publisher;
     private String note;
+    private Integer quantity;
     
     @ManyToOne(cascade={CascadeType.PERSIST, CascadeType.DETACH})
     private BookTB book;
@@ -47,7 +48,7 @@ public class InventoryTB implements Serializable {
         this.book = book;
         this.status = status;
         this.storage = storage;
-        this.price = price;
+        this.price = Integer.valueOf(price);
     }
 
     public Integer getInventoryId() {
@@ -59,11 +60,11 @@ public class InventoryTB implements Serializable {
     }
 
     public String getPrice() {
-        return price;
+        return String.valueOf(price);
     }
 
     public void setPrice(String price) {
-        this.price = price;
+        this.price = Integer.valueOf(price);
     }
 
     public String getBookSize() {
@@ -90,6 +91,14 @@ public class InventoryTB implements Serializable {
         this.note = note;
     }
 
+    public Integer getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(Integer quantity) {
+        this.quantity = quantity;
+    }
+    
     public BookTB getBook() {
         return book;
     }
