@@ -22,7 +22,7 @@ public class Login implements Serializable {
     
     public String login() {
         try {
-            if(userExists()) {
+            if(userExist()) {
                 clear();
             }
             return "main.xhtml";
@@ -33,7 +33,7 @@ public class Login implements Serializable {
         }
     }
     
-    private boolean userExists() {
+    private boolean userExist() {
         return dbc.getUser(name, pass) != null;
     }
     
