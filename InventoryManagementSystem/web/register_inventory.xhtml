@@ -1,0 +1,52 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:jsf="http://xmlns.jcp.org/jsf"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Register Inventory Page</title>
+        <link rel="stylesheet" type="text/css" href="./css/style.css"/>
+    </h:head>
+    <h:body>
+        <div class="main">
+            <h:form>
+                <h2>Register Inventory Form</h2>
+                <table>
+                    <tr>
+                        <td>Title: </td>
+                        <td><input type="text" jsf:value="#{registerInventory.title}" placeholder="Winnie the Pooh" /></td>
+                    </tr>
+                    <tr>
+                        <td>Author: </td>
+                        <td><input type="text" jsf:value="#{registerInventory.author}" placeholder="A.A.MILNE" /></td>
+                    </tr>
+                    <tr>
+                        <td>Status: </td>
+                        <td>
+                            <h:selectOneMenu value="#{registerInventory.status}">
+                                <f:selectItems value="#{selection.statusItems}" />
+                            </h:selectOneMenu>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Price: </td>
+                        <td>￥<input type="text" jsf:value="#{registerInventory.price}" placeholder="9002" /></td>
+                    </tr>
+                    <tr>
+                        <td>Storage: </td>
+                        <td>
+                            <h:selectOneMenu value="#{registerInventory.storage}">
+                                <f:selectItems value="#{selection.storageItems}" />
+                            </h:selectOneMenu>
+                        </td>
+                    </tr>
+                </table>
+                <div class="btn">
+                    <h:commandButton value="Confirm" action="#{registerInventory.toConfirm}" />
+                </div>
+            </h:form>
+        </div>
+    </h:body>
+</html>
