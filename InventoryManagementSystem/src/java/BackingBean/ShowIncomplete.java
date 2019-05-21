@@ -12,6 +12,7 @@ import javax.inject.Named;
 @SessionScoped
 @Named
 public class ShowIncomplete implements Serializable {
+    private String keyword = "";
     private List<ViewData> viewList;
     
     @EJB
