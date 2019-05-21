@@ -25,6 +25,18 @@ public class TopPage implements Serializable {
     private DBController dbc;
 
     public TopPage() {}
+    
+    @PostConstruct
+    public void init() {
+        addStatus();
+        addStorage();
+        addUser();
+        if(message.equals("Add user table")) {
+            message = "Add Table Initialize";
+        } else {
+            message = "";
+        }
+    }
 
     public String addStatus() {
         try {
