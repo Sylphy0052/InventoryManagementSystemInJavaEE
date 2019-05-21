@@ -17,8 +17,6 @@ public class InventoryTB implements Serializable {
     private Integer inventoryId;
     
     private Integer price;
-    @Column(name = "book_size")
-    private String bookSize;
     private String publisher;
     private String note;
     private Integer quantity;
