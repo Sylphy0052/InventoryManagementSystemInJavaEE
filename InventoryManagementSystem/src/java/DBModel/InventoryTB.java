@@ -64,20 +64,12 @@ public class InventoryTB implements Serializable {
         this.inventoryId = inventoryId;
     }
 
-    public String getPrice() {
-        return price == null? "": String.valueOf(price);
+    public Integer getPrice() {
+        return price;
     }
 
-    public void setPrice(String price) {
-        this.price = Integer.valueOf(price);
-    }
-
-    public String getBookSize() {
-        return bookSize;
-    }
-
-    public void setBookSize(String bookSize) {
-        this.bookSize = bookSize;
+    public void setPrice(Integer price) {
+        this.price = price;
     }
 
     public String getPublisher() {
