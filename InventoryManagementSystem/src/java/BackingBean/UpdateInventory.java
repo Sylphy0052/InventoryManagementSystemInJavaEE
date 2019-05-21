@@ -32,9 +32,16 @@ public class UpdateInventory implements Serializable {
     public String toUpdate(InventoryTB inventory) {
         this.title = inventory.getBook().getTitle();
         this.author = inventory.getBook().getAuthor();
+        this.publisher = inventory.getPublisher();
         this.status = inventory.getStatus().getRank();
-        this.price = inventory.getPrice();
+        if(inventory.getPrice() == null) {
+            this.price = "";
+        } else {
+            this.price = String.valueOf(inventory.getPrice());
+        }
         this.storage = inventory.getStorage().getName();
+        this.note = inventory.getNote();
+        this.quantity = String.valueOf(inventory.getQuantity());
         this.inventory = inventory;
         return "update_inventory.xhtml";
     }
