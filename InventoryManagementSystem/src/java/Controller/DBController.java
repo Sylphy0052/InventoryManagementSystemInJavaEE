@@ -112,6 +112,28 @@ public class DBController {
                 .setParameter("status", 1)
                 .setParameter("storage", 1)
                 .setParameter("price", null)
+                .setParameter("publisher", null)
+                .getResultList();
+    }
+    
+    public List<InventoryTB> getIncompleteInventoryList(String keyword) {
+        TypedQuery<InventoryTB> query = em.createQuery(
+                "SELECT i FROM InventoryTB i "
+                        + "WHERE (i.status.statusId = :status"
+                        + " OR i.storage.storageId = :storage"
+                        + " OR i.price = :price"
+                        + " OR i.publisher = :publisher)"
+                        + " AND i.quantity <> 0"
+                        + " AND (i.book.title LIKE :keyword"
+                        + " OR i.book.author LIKE :keyword)",
+                InventoryTB.class
+        );
+        return query
+                .setParameter("status", 1)
+                .setParameter("storage", 1)
+                .setParameter("price", null)
+                .setParameter("publisher", null)
+                .setParameter("keyword", "%" + keyword + "%")
                 .getResultList();
     }
     
