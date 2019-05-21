@@ -88,14 +88,14 @@ public class InventoryTB implements Serializable {
         this.note = note;
     }
 
-    public String getQuantity() {
-        return quantity == null? "": String.valueOf(quantity);
+    public Integer getQuantity() {
+        return quantity;
     }
 
-    public void setQuantity(String quantity) {
-        this.quantity = Integer.valueOf(quantity);
+    public void setQuantity(Integer quantity) {
+        this.quantity = quantity;
     }
-    
+
     public BookTB getBook() {
         return book;
     }
