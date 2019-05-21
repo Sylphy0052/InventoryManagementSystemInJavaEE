@@ -40,12 +40,7 @@ public class RegisterInventory implements Serializable {
         StatusTB statusTB = dbc.getStatus(status);
         StorageTB storageTB = dbc.getStorage(storage);
         InventoryTB inventoryTB;
-        if(price.isEmpty()) {
-            inventoryTB = new InventoryTB(bookTB, statusTB, storageTB);
-        } else {
-            inventoryTB = new InventoryTB(bookTB, statusTB, storageTB, price);
-        }
-        bookTB.setInventory(inventoryTB);
+        inventoryTB = new InventoryTB(bookTB, statusTB, storageTB, price, publisher, note, quantity);
         dbc.add(inventoryTB);
         clear();
         return "main.xhtml";
