@@ -34,11 +34,8 @@ public class UpdateInventory implements Serializable {
         this.author = inventory.getBook().getAuthor();
         this.publisher = inventory.getPublisher();
         this.status = inventory.getStatus().getRank();
-        if(inventory.getPrice() == null) {
-            this.price = "";
-        } else {
-            this.price = String.valueOf(inventory.getPrice());
-        }
+        this.price = inventory.getPrice() == null? "": String.valueOf(inventory.getPrice());
+        
         this.storage = inventory.getStorage().getName();
         this.note = inventory.getNote();
         this.quantity = String.valueOf(inventory.getQuantity());
