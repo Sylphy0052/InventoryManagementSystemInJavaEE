@@ -1,11 +1,15 @@
 package BackingBean;
 
 import Controller.DBController;
+import DBModel.BookTB;
+import DBModel.InventoryTB;
 import DBModel.StatusTB;
 import DBModel.StorageTB;
 import DBModel.UserTB;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
+import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.ejb.EJBException;
 import javax.enterprise.context.SessionScoped;
