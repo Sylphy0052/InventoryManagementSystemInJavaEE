@@ -13,9 +13,10 @@ import javax.inject.Named;
 @SessionScoped
 @Named
 public class ShipInventory implements Serializable {
-    private String keyword = "";
+    private String keyword;
     
     private List<ViewData> viewList;
+    private List<ViewData> allViewList;
     private List<ViewData> checkedViewList;
     
     public ShipInventory() {};
@@ -25,36 +26,51 @@ public class ShipInventory implements Serializable {
     
     @PostConstruct
     public void init() {
-        createViewList();
+        keyword = "";
+        allViewList = new ArrayList<>();
+        List<InventoryTB> inventoryList = dbc.getInventoryList();
+        inventoryList.forEach((i) -> {
+           allViewList.add(new ViewData(i)); 
+        });
+        listDeepCopy();
         checkedViewList = new ArrayList<>();
+    }
+    
+    private void listDeepCopy() {
+        viewList = new ArrayList<>();
+        allViewList.forEach((a) -> {
+            viewList.add(a);
+        });
     }
     
     public String search() {
         createViewList();
-        createCheckedViewList();
+        keyword = "";
         return null;
     }
     
     private void createViewList() {
-        List<InventoryTB> inventoryList;
         if(keyword.isEmpty()) {
-            inventoryList = dbc.getInventoryList();
+            listDeepCopy();
         } else {
-            inventoryList = dbc.getInventoryList(keyword);
+            viewList = new ArrayList<>();
+            allViewList.forEach((a) -> {
+                if(a.getTitle().contains(keyword) || a.getAuthor().contains(keyword)) viewList.add(a);
+            });
         }
-        viewList = new ArrayList<>();
-        inventoryList.forEach((i) -> {
-            viewList.add(new ViewData(i));
-        });
     }
     
     private void createCheckedViewList() {
-        viewList.forEach(((v) -> {
+        allViewList.forEach(((v) -> {
             if(v.isChecked()) checkedViewList.add(v);
         }));
         checkedViewList.forEach((c) -> {
             if(!c.isChecked()) checkedViewList.remove(c);
         });
+    }
+    
+    public String back() {
+        return "ship_inventory.xhtml";
     }
     
     public String toConfirm() {
@@ -66,8 +82,7 @@ public class ShipInventory implements Serializable {
         checkedViewList.forEach((c) -> {
             dbc.update(c.getUpdateInventory());
         });
-        createViewList();
-        createCheckedViewList();
+        init();
         return "main.xhtml";
     }
 
