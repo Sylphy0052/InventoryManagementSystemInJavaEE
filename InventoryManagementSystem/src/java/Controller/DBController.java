@@ -80,7 +80,8 @@ public class DBController {
     }
     
     public List<InventoryTB> getInventoryList() {
-        return em.createQuery("SELECT i FROM InventoryTB i")
+        return em.createQuery("SELECT i FROM InventoryTB i"
+                + " WHERE i.quantity <> 0")
                 .getResultList();
     }
     
