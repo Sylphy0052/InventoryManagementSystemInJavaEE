@@ -92,6 +92,28 @@ public class TopPage implements Serializable {
         return null;
     }
     
+    public String addBook() {
+        List<StatusTB> statusList = dbc.getStatusList();
+        List<StorageTB> storageList = dbc.getStorageList();
+        BookTB book1 = new BookTB("PythonによるTCP/IPソケットプログラミング", "小高知宏");
+        InventoryTB inventory1 = new InventoryTB(book1, statusList.get(0), storageList.get(0), "2376", "オーム社", "", "4");
+        BookTB book2 = new BookTB("ゼロから作るDeep Learning", "斎藤康毅");
+        InventoryTB inventory2 = new InventoryTB(book2, statusList.get(0), storageList.get(2), "3672", "オライリー・ジャパン", "持ってる", "8");
+        BookTB book3 = new BookTB("Pythonで体験してわかるアルゴリズムとデータ構造", "西澤弘毅, 森田光");
+        InventoryTB inventory3 = new InventoryTB(book3, statusList.get(3), storageList.get(1), "2592", "近代科学社", "ほしい", "3");
+        BookTB book4 = new BookTB("リーダブルコード", "ダスティン ボズウェル, トレバー フォシェ");
+        InventoryTB inventory4 = new InventoryTB(book4, statusList.get(1), storageList.get(2), "2592", "オライリー・ジャパン", "おすすめ", "120");
+        BookTB book5 = new BookTB("Pythonで動かして学ぶ！あたらしい機械学習の教科書", "伊藤真");
+        InventoryTB inventory5 = new InventoryTB(book5, statusList.get(2), storageList.get(0), "2894", "翔泳社", "", "1");
+        dbc.add(inventory1);
+        dbc.add(inventory2);
+        dbc.add(inventory3);
+        dbc.add(inventory4);
+        dbc.add(inventory5);
+        
+        return null;
+    }
+    
     public String clear() {
         message = "";
         return null;
