@@ -36,19 +36,24 @@ public class InventoryTB implements Serializable {
         this.book = book;
     }
     
-    public InventoryTB(BookTB book, StatusTB status, StorageTB storage) {
+    public InventoryTB(BookTB book, StatusTB status, StorageTB storage, String price, String publisher, String note, String quantity) {
         this.book = book;
         this.status = status;
         this.storage = storage;
-        this.quantity = 1;
+        this.price = price.isEmpty()? null: Integer.valueOf(price);
+        this.publisher = publisher;
+        this.note = note;
+        this.quantity = quantity.isEmpty()? 1: Integer.valueOf(quantity);
     }
     
-    public InventoryTB(BookTB book, StatusTB status, StorageTB storage, String price) {
+    public void setAll(BookTB book, StatusTB status, StorageTB storage, String price, String publisher, String note, String quantity) {
         this.book = book;
         this.status = status;
         this.storage = storage;
-        this.price = Integer.valueOf(price);
-        this.quantity = 1;
+        this.price = price.isEmpty()? null: Integer.valueOf(price);
+        this.publisher = publisher;
+        this.note = note;
+        this.quantity = quantity.isEmpty()? 1: Integer.valueOf(quantity);
     }
 
     public Integer getInventoryId() {
