@@ -51,13 +51,7 @@ public class UpdateInventory implements Serializable {
         BookTB bookTB = new BookTB(title, author);
         StatusTB statusTB = dbc.getStatus(status);
         StorageTB storageTB = dbc.getStorage(storage);
-        inventory.setBook(bookTB);
-        inventory.setStatus(statusTB);
-        inventory.setStorage(storageTB);
-        if(!price.isEmpty()) {
-            inventory.setPrice(price);
-        }
-        bookTB.setInventory(inventory);
+        inventory.setAll(bookTB, statusTB, storageTB, price, publisher, note, quantity);
         dbc.update(inventory);
         clear();
         return "main.xhtml";
