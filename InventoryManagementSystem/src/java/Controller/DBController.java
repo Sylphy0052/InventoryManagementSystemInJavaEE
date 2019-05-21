@@ -103,7 +103,8 @@ public class DBController {
                 "SELECT i FROM InventoryTB i "
                         + "WHERE (i.status.statusId = :status"
                         + " OR i.storage.storageId = :storage"
-                        + " OR i.price = :price)"
+                        + " OR i.price = :price"
+                        + " OR i.publisher = :publisher)"
                         + " AND i.quantity <> 0",
                 InventoryTB.class
         );
