@@ -41,10 +41,6 @@ public class ShowIncomplete implements Serializable {
     public String goToUpdate(InventoryTB inventory) {
         return "search_inventory.xhtml";
     }
-    
-    public String goToUpdateQuantity(InventoryTB inventory) {
-        return "search_inventory.xhtml";
-    }
 
     public List<ViewData> getViewList() {
         createInventoryList();
