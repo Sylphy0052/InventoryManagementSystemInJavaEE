@@ -29,14 +29,7 @@ public class SearchInventory implements Serializable {
             inventoryList = dbc.getInventoryList();
         }
         inventoryList.forEach((i) -> {
-            viewList.add(new ViewData(
-                    i.getBook().getTitle(), 
-                    i.getBook().getAuthor(),
-                    i.getStatus().getRank() + ":" + i.getStatus().getDescription(),
-                    i.getPrice(),
-                    i.getStorage().getName(),
-                    i
-            ));
+            viewList.add(new ViewData(i));
         });
     }
     
