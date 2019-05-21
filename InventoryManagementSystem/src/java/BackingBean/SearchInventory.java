@@ -44,10 +44,6 @@ public class SearchInventory implements Serializable {
         createInventoryList();
         return null;
     }
-    
-    public String goToUpdateQuantity(InventoryTB inventory) {
-        return "search_inventory.xhtml";
-    }
 
     public String getKeyword() {
         return keyword;
