@@ -15,9 +15,12 @@ import javax.inject.Named;
 public class RegisterInventory implements Serializable {
     private String title;
     private String author;
+    private String publisher;
     private String status;
     private String price;
     private String storage;
+    private String note;
+    private String quantity;
     
     @EJB
     private DBController dbc;
@@ -51,9 +54,12 @@ public class RegisterInventory implements Serializable {
     private void clear() {
         title = "";
         author = "";
+        publisher = "";
         status = "";
         price = "";
         storage = "";
+        note = "";
+        quantity = "";
     }
 
     public String getTitle() {
@@ -70,6 +76,14 @@ public class RegisterInventory implements Serializable {
 
     public void setAuthor(String author) {
         this.author = author;
+    }
+
+    public String getPublisher() {
+        return publisher;
+    }
+
+    public void setPublisher(String publisher) {
+        this.publisher = publisher;
     }
 
     public String getStatus() {
@@ -95,6 +109,20 @@ public class RegisterInventory implements Serializable {
     public void setStorage(String storage) {
         this.storage = storage;
     }
-    
-    
+
+    public String getNote() {
+        return note;
+    }
+
+    public void setNote(String note) {
+        this.note = note;
+    }
+
+    public String getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(String quantity) {
+        this.quantity = quantity;
+    }
 }
