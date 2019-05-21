@@ -23,16 +23,13 @@ public class ShowIncomplete implements Serializable {
     private void createInventoryList() {
         viewList = new ArrayList<>();
         List<InventoryTB> inventoryList;
-        inventoryList = dbc.getIncompleteInventoryList();
+        if(!keyword.isEmpty()) {
+            inventoryList = dbc.getIncompleteInventoryList(keyword);
+        } else {
+            inventoryList = dbc.getIncompleteInventoryList();
+        }
         inventoryList.forEach((i) -> {
-            viewList.add(new ViewData(
-                    i.getBook().getTitle(), 
-                    i.getBook().getAuthor(),
-                    i.getStatus().getRank() + ":" + i.getStatus().getDescription(),
-                    i.getPrice(),
-                    i.getStorage().getName(),
-                    i
-            ));
+            viewList.add(new ViewData(i));
         });
     }
     
