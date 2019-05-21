@@ -1,15 +1,11 @@
 package DBModel;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 
 @Entity
 public class BookTB implements Serializable {
@@ -21,9 +17,6 @@ public class BookTB implements Serializable {
     private String title;
     private String author;
     
-    @OneToMany(cascade={CascadeType.ALL})
-    private List<InventoryTB> inventoryList = new ArrayList<>();
-    
     public BookTB() {}
     
     public BookTB(String title, String author) {
@@ -34,11 +27,6 @@ public class BookTB implements Serializable {
     public BookTB(String title, String author, InventoryTB inventory) {
         this.title = title;
         this.author = author;
-        this.inventoryList.add(inventory);
-    }
-    
-    public void setInventory(InventoryTB inventory) {
-        this.inventoryList.add(inventory);
     }
 
     public Integer getBookId() {
@@ -63,13 +51,5 @@ public class BookTB implements Serializable {
 
     public void setAuthor(String author) {
         this.author = author;
-    }
-
-    public List<InventoryTB> getInventoryList() {
-        return inventoryList;
-    }
-
-    public void setInventoryList(List<InventoryTB> inventoryList) {
-        this.inventoryList = inventoryList;
     }
 }
