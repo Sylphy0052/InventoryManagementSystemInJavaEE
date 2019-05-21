@@ -12,12 +12,7 @@
         <h2 class="err">#{topPage.message}</h2>
         <a jsf:outcome="login" target="_blank">Login Page</a>
         <h:form class="btn">
-            <h:commandButton value="Add Status Table" action="#{topPage.addStatus()}" />
-            <h:commandButton value="Add Storage Table" action="#{topPage.addStorage()}" />
-            <h:commandButton value="Add User Table" action="#{topPage.addUser()}" />
-            <div class="btn">
-                <h:commandButton value="Clear" action="#{topPage.clear()}" />
-            </div>
+            <h:commandButton value="Add Book Records" action="#{topPage.addBook()}" />
         </h:form>
     </h:body>
 </html>
