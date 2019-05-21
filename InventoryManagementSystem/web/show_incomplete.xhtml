@@ -20,42 +20,61 @@
                 <h2>Incomplete Inventory List</h2>
             </div>
             <h:form>
+                <div class="keyword">
+                    <input type="text" jsf:value="#{showInventory.keyword}" placeholder="Keyword" />
+                    <h:commandButton value="Search" action="#{showInventory.search()}" />
+                </div>
                 <h:dataTable value="#{showIncomplete.viewList}" var="view_data" id="inventory-table" border="1" >
                     <h:column>
                         <f:facet name="header">
-                            <h:outputText value="Title:" />
+                            <h:outputText value="Title" />
                         </f:facet>
                         #{view_data.title}
                     </h:column>
                     <h:column>
                         <f:facet name="header">
-                            <h:outputText value="Author:" />
+                            <h:outputText value="Author" />
                         </f:facet>
                         #{view_data.author}
                     </h:column>
                     <h:column>
                         <f:facet name="header">
-                            <h:outputText value="Status" />
+                            <h:outputText value="Publisher" />
                         </f:facet>
-                        #{view_data.rank}
+                        #{view_data.publisher}
                     </h:column>
                     <h:column>
                         <f:facet name="header">
-                            <h:outputText value="Price:" />
+                            <h:outputText value="Status" />
+                        </f:facet>
+                        #{view_data.status}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Price" />
                         </f:facet>
                         #{view_data.price}
                     </h:column>
                     <h:column>
                         <f:facet name="header">
-                            <h:outputText value="Storage:" />
+                            <h:outputText value="Storage" />
                         </f:facet>
                         #{view_data.storage}
                     </h:column>
                     <h:column>
-                        <h:commandButton value="Update" action="#{updateInventory.toUpdate(view_data.inventory)}" />
+                        <f:facet name="header">
+                            <h:outputText value="Quantity" />
+                        </f:facet>
+                        #{view_data.quantity}
                     </h:column>
                     <h:column>
-                        <h:commandButton value="Update Quantity" action="#{inventory.goToUpdateQuantity(view_data.inventory)}" />
+                        <f:facet name="header">
+                            <h:outputText value="Note" />
+                        </f:facet>
+                        #{view_data.note}
+                    </h:column>
+                    <h:column>
+                        <h:commandButton value="Update" action="#{updateInventory.toUpdate(view_data.inventory)}" />
                     </h:column>
                 </h:dataTable>
             </h:form>
