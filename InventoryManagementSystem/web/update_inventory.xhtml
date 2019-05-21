@@ -21,11 +21,15 @@
                 <table>
                     <tr>
                         <td>Title: </td>
-                        <td><input type="text" jsf:value="#{updateInventory.title}" placeholder="Winnie the Pooh" /></td>
+                        <td><input type="text" jsf:value="#{updateInventory.title}" placeholder="title" /></td>
                     </tr>
                     <tr>
                         <td>Author: </td>
-                        <td><input type="text" jsf:value="#{updateInventory.author}" placeholder="A.A.MILNE" /></td>
+                        <td><input type="text" jsf:value="#{updateInventory.author}" placeholder="author" /></td>
+                    </tr>
+                    <tr>
+                        <td>Publisher: </td>
+                        <td><input type="text" jsf:value="#{updateInventory.publisher}" placeholder="publisher" /></td>
                     </tr>
                     <tr>
                         <td>Status: </td>
@@ -37,7 +41,7 @@
                     </tr>
                     <tr>
                         <td>Price: </td>
-                        <td>￥<input type="text" jsf:value="#{updateInventory.price}" placeholder="9002" /></td>
+                        <td>￥<input type="text" jsf:value="#{updateInventory.price}" placeholder="000" /></td>
                     </tr>
                     <tr>
                         <td>Storage: </td>
@@ -47,9 +51,17 @@
                             </h:selectOneMenu>
                         </td>
                     </tr>
+                    <tr>
+                        <td>Quantity: </td>
+                        <td><input type="text" jsf:value="#{updateInventory.quantity}" placeholder="1" /></td>
+                    </tr>
+                    <tr>
+                        <td>Note: </td>
+                        <td><textarea jsf:value="#{updateInventory.note}" placeholder="note" /></td>
+                    </tr>
                 </table>
                 <div class="btn">
-                    <h:commandButton value="Confirm" action="#{updateInventory.toConfirm}" />
+                    <h:commandButton value="Confirm" action="#{updateInventory.toConfirm()}" />
                 </div>
             </h:form>
         </div>
