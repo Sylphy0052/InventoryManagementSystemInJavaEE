@@ -70,6 +70,7 @@ public class ShipInventory implements Serializable {
     }
     
     public String back() {
+        checkedViewList = new ArrayList<>();
         return "ship_inventory.xhtml";
     }
     
